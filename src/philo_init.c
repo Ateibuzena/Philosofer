@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 21:02:37 by azubieta          #+#    #+#             */
-/*   Updated: 2024/12/27 13:37:23 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 11:42:50 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,24 @@ int	ft_init_environment(t_env *env, int argc, char **argv)
 	env->time_to_eat = ft_atoi(argv[3]);
 	env->time_to_sleep = ft_atoi(argv[4]);
 	env->start_time = ft_get_time();
+	env->threads_ready = 0;
 	if (argc == 6)
 		env->meals_required = ft_atoi(argv[5]);
 	else
 		env->meals_required = -1;
 	env->forks = malloc(env->num_philos * sizeof(pthread_mutex_t));
 	if (!env->forks)
-		return (printf("Error: Creating forks"));
+		return (printf("Error: Creating forks\n"));
 	i = -1;
 	while (++i < env->num_philos)
 		if (pthread_mutex_init(&env->forks[i], NULL) != 0)
 			return (printf("Error: Initializing forks' mutexes\n"));
 	if (pthread_mutex_init(&env->simulation_lock, NULL) != 0)
 		return (printf("Error: Initializing print and simulation mutexes\n"));
+	if (pthread_mutex_init(&env->start_lock, NULL) != 0)
+		return (printf("Error: Initializing start mutex\n"));
 	env->philos = malloc(env->num_philos * sizeof(t_philo));
 	if (!env->philos)
-		return (printf("Error: Creating philos"));
+		return (printf("Error: Creating philos\n"));
 	return (ft_init_philosophers(env));
 }

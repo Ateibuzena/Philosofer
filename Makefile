@@ -1,11 +1,9 @@
 # Variables
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=thread
-
-INCLUDES = -I$(LIBFT_DIR)
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC_DIR = ./src
-SRCS = philo.c\
+SRCS = main.c\
 		$(SRC_DIR)/philo_utils.c\
 		$(SRC_DIR)/philo_threads.c\
 		$(SRC_DIR)/philo_lifecycle.c\

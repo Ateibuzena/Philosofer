@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 21:02:49 by azubieta          #+#    #+#             */
-/*   Updated: 2024/12/27 15:30:37 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 11:45:26 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,16 @@ int	ft_simulation_lock(t_env *env)
 void	ft_msleep(time_t time)
 {
 	time_t	current_time;
+	time_t	sleep_interval;
 
 	current_time = ft_get_time();
+	sleep_interval = time / 100;
+	if (sleep_interval < 100)
+		sleep_interval = 100;
+	if (sleep_interval > 1000)
+		sleep_interval = 1000;
 	while (ft_get_time() - current_time < time)
-		usleep(time * 10);
+		usleep(sleep_interval);
 }
 
 void	ft_print(char *str, t_env *env, int i)

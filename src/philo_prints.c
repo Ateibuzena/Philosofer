@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   philo_prints.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azubieta <azubieta@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: azubieta <azubieta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:36:05 by azubieta          #+#    #+#             */
-/*   Updated: 2024/12/27 15:35:57 by azubieta         ###   ########.fr       */
+/*   Updated: 2025/07/06 11:44:34 by azubieta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philoft.h"
+#include "../philoft.h"
 
 void	ft_print_philosophers(t_env *env)
 {
